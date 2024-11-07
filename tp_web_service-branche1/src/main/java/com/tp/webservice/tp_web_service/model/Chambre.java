@@ -15,7 +15,6 @@ public class Chambre {
     private String id;
     private Integer nbLit;
     private Double prix;
-    private boolean disponible = true;
 
     public Chambre(Integer nbLit, Double prix ){
         this.id = generateNewId();
@@ -42,7 +41,7 @@ public class Chambre {
 
         for (Reservation reservation : reservationList) {
             // Vérifiez si la réservation concerne cette chambre spécifique
-            if (Objects.equals(reservation.getChambre().getId(), this.id) && reservation.getHotel().getNom().equalsIgnoreCase(nomHotel)) { // Supposant que getChambre() retourne une instance de Chambre
+            if (Objects.equals(reservation.getChambre().getId(), this.id) && reservation.getHotel().getNom().equalsIgnoreCase(nomHotel)) {
                 // Vérification des chevauchements de dates
                 if ((dateArrivee.isBefore(reservation.getDateDeparture()) && dateDepart.isAfter(reservation.getReservationDate())) ||
                         (dateArrivee.isAfter(reservation.getReservationDate()) && dateArrivee.isBefore(reservation.getDateDeparture()))) {
@@ -53,19 +52,10 @@ public class Chambre {
         return true; // La chambre est disponible
 
     }
-    public String reserverChambre() {
-            this.disponible = false;
-            // Logique pour réserver la chambre
-            return "Vous avez reservé la chambre " + id;
-    }
 
     @Override
     public String toString() {
         return "Chambre: " + nbLit + " lits, Prix: " + prix;
-    }
-
-    public boolean getDisponible() {
-        return disponible;
     }
 
     public String generateNewId() {

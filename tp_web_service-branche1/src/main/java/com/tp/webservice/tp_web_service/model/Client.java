@@ -23,6 +23,4 @@ public class Client {
         this.reservations = new ArrayList<>();
         this.carteCredits = new ArrayList<>();
     }
-    public void saisirInfo() {
-    }
 }

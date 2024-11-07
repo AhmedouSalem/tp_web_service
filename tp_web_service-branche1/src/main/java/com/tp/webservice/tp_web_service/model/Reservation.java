@@ -23,8 +23,4 @@ public class Reservation {
         this.reservationDate = reservationDate;
         this.dateDeparture = dateDeparture;
     }
-
-    public void creerReservation() {
-        chambre.reserverChambre();
-    }
 }

@@ -314,7 +314,7 @@ public class HotelReservationApp extends Application {
             Reservation reservation = new Reservation(client, hotel, chambre, dateArrival, dateFinSejour);
             client.getReservations().add(reservation);
             // Ajouter la réservation à la liste
-            reservations.add(reservation); //
+            reservations.add(reservation);
 
             // Simuler le paiement
             String paiementResultat = carteCredit.payerMontant(chambre.getPrix());
@@ -327,7 +327,7 @@ public class HotelReservationApp extends Application {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Réservation confirmée !");
             alert.setOnHidden(event -> {
                 // Fermer également la fenêtre de détails si elle est ouverte
-                detailStage.close(); // Fermez la fenêtre de détails ici, si vous avez une référence à detailStage
+                detailStage.close();
             });
             alert.showAndWait();
         });
