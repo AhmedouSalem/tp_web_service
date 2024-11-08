@@ -23,8 +23,4 @@ public class Hotel {
         this.chambres.addAll(chambres);
     }
     Hotel(){}
-
-    public String afficherDetails() {
-        return "";
-    }
 }
