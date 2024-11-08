@@ -13,12 +13,14 @@ public class Hotel {
     private int nbEtoile;
     private Adresse adresse;
     private List<Chambre> chambres;
+    private List<Agence> agencesPartenaires;
 
     public Hotel(String nom, int nbEtoile, List<Chambre> chambres, Adresse adresse) {
         this.nom = nom;
         this.nbEtoile = nbEtoile;
         this.adresse = adresse;
         this.chambres = new ArrayList<>();
+        this.agencesPartenaires = new ArrayList<>();
         // Ajout de chambres codées en dur
         this.chambres.addAll(chambres);
     }

@@ -10,17 +10,21 @@ import java.time.LocalDate;
 public class Reservation {
     private static int numReservation = 1;
     private Client client;
-    private Hotel hotel;
+    private Agence agence;
     private LocalDate reservationDate;
     private LocalDate dateDeparture;
     private Chambre chambre;
 
-    public Reservation(Client client, Hotel hotel, Chambre chambre, LocalDate reservationDate, LocalDate dateDeparture) {
+    public Reservation(Client client, Agence agence, Chambre chambre, LocalDate reservationDate, LocalDate dateDeparture) {
         numReservation = numReservation++;
         this.client = client;
-        this.hotel = hotel;
+        this.agence = agence;
         this.chambre = chambre;
         this.reservationDate = reservationDate;
         this.dateDeparture = dateDeparture;
+    }
+
+    public boolean confirmerReservation() {
+        return numReservation == 1;
     }
 }

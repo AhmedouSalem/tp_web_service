@@ -23,4 +23,8 @@ public class Client {
         this.reservations = new ArrayList<>();
         this.carteCredits = new ArrayList<>();
     }
+
+    public String effectuerReservation() {
+        return null;
+    }
 }
