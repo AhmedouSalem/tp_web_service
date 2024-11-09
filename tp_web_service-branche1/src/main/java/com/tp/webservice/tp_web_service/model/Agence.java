@@ -14,6 +14,7 @@ public class Agence {
     private String nom;
     private Address address;
     private List<Hotel> hotels;
+    private Login login;
     public Agence(String code, String nom, Address address) {
         this.code = code;
         this.nom = nom;
@@ -21,5 +22,15 @@ public class Agence {
         hotels = new ArrayList<>();
     }
 
+    public Agence() {}
+
     public void CreerReservation() {}
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
+
+    public boolean validerAgenceLogin(Login login) {
+        return this.login.equals(login);
+    }
 }

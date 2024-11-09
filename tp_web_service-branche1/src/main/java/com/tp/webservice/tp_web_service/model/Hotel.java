@@ -3,6 +3,7 @@ package com.tp.webservice.tp_web_service.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,4 +26,6 @@ public class Hotel {
         this.chambres.addAll(chambres);
     }
     Hotel(){}
+
+
 }

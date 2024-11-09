@@ -28,20 +28,13 @@ public class Chambre {
         this.prix = prix;
     }
 
-    public boolean checkDisponible(String nomHotel, List<Reservation> reservationList, LocalDate dateArrivee, LocalDate dateDepart, Double prixMin, Double prixMax, Integer nbPersonne) {
-        if (nbPersonne != this.nbLit) {
-            return false;
-        }
+    public Chambre() {}
 
-        // Vérifiez si le prix de la chambre est en dehors de la plage souhaitée
-        if (this.prix < prixMin || this.prix > prixMax) {
-            // Si le prix n'est pas dans la plage, retournez false pour indiquer que la chambre n'est pas disponible
-            return false;
-        }
-
+    public boolean checkDisponible(String nomHotel, List<Reservation> reservationList, LocalDate dateArrivee, LocalDate dateDepart) {
         for (Reservation reservation : reservationList) {
             // Vérifiez si la réservation concerne cette chambre spécifique
             if (Objects.equals(reservation.getChambre().getId(), this.id) && reservation.getHotel().getNom().equalsIgnoreCase(nomHotel)) {
+                for (Hotel hotel : reservation.getAgence().getHotels())
                 // Vérification des chevauchements de dates
                 if ((dateArrivee.isBefore(reservation.getDateDeparture()) && dateDepart.isAfter(reservation.getReservationDate())) ||
                         (dateArrivee.isAfter(reservation.getReservationDate()) && dateArrivee.isBefore(reservation.getDateDeparture()))) {
@@ -53,9 +46,10 @@ public class Chambre {
 
     }
 
+
     @Override
     public String toString() {
-        return "Chambre: " + nbLit + " lits, Prix: " + prix;
+        return "Chambre: " + nbLit + " lits";
     }
 
     public String generateNewId() {
