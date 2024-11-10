@@ -3,11 +3,13 @@ package com.tp.webservice.tp_web_service.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Getter
 @Setter
-public class Reservation {
+public class Reservation implements Serializable {
     private static int numReservation = 1;
     private Client client;
     private Agence agence;
@@ -26,9 +28,8 @@ public class Reservation {
         this.dateDeparture = dateDeparture;
     }
 
-    public Reservation() {}
 
-    public boolean confirmerReservation() {
-        return numReservation == 1;
+    public String generateNewId() {
+        return UUID.randomUUID().toString(); // Génère un identifiant unique sous forme de chaîne
     }
 }

@@ -3,7 +3,7 @@ package com.tp.webservice.tp_web_service.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.mail.Address;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,17 +12,16 @@ import java.util.List;
 public class Agence {
     private String code;
     private String nom;
-    private Address address;
+    private Adresse address;
     private List<Hotel> hotels;
     private Login login;
-    public Agence(String code, String nom, Address address) {
+    public Agence(String code, String nom, Adresse address) {
         this.code = code;
         this.nom = nom;
         this.address = address;
         hotels = new ArrayList<>();
     }
 
-    public Agence() {}
 
     public void CreerReservation() {}
 
@@ -30,7 +29,11 @@ public class Agence {
         this.login = login;
     }
 
+    public void setHotels(List<Hotel> hotels) {
+        this.hotels = hotels;
+    }
+
     public boolean validerAgenceLogin(Login login) {
-        return this.login.equals(login);
+        return this.login.getIdentifiant().equalsIgnoreCase(login.getIdentifiant()) && this.login.getPassword().equals(login.getPassword());
     }
 }

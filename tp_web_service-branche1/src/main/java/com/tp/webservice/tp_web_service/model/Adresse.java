@@ -3,9 +3,11 @@ package com.tp.webservice.tp_web_service.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
-public class Adresse {
+public class Adresse implements Serializable {
 	private String pays;
 	private String ville;
 	private String rue;
@@ -15,9 +17,6 @@ public class Adresse {
 	private Integer longitude;
 	private Integer latitude;
 
-	public Adresse() {
-		// TODO Auto-generated constructor stub
-	}
 
 	public Adresse(String pays, String ville, String rue, String numero, String lieuDit, Integer codePostal, Integer longitude, Integer latitude) {
 		this.pays = pays;

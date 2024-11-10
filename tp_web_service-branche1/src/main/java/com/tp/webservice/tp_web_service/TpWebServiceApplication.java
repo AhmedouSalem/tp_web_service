@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 		"com.tp.webservice.tp_web_service.ManageException",
 		"com.tp.webservice.tp_web_service.publisher",
 		"com.tp.webservice.tp_web_service.webservice",
+		"com.tp.webservice.tp_web_service.model",
+		"com.tp.webservice.tp_web_service.util",
 })
 public class TpWebServiceApplication {
 

@@ -28,7 +28,6 @@ public class Chambre {
         this.prix = prix;
     }
 
-    public Chambre() {}
 
     public boolean checkDisponible(String nomHotel, List<Reservation> reservationList, LocalDate dateArrivee, LocalDate dateDepart) {
         for (Reservation reservation : reservationList) {

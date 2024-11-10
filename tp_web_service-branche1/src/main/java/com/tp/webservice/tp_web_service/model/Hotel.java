@@ -16,16 +16,15 @@ public class Hotel {
     private List<Chambre> chambres;
     private List<Agence> agencesPartenaires;
 
-    public Hotel(String nom, int nbEtoile, List<Chambre> chambres, Adresse adresse) {
+    public Hotel(String nom, int nbEtoile, List<Chambre> chambres, Adresse adresse, List<Agence> agencesPartenaires) {
         this.nom = nom;
         this.nbEtoile = nbEtoile;
         this.adresse = adresse;
         this.chambres = new ArrayList<>();
-        this.agencesPartenaires = new ArrayList<>();
+        this.agencesPartenaires = agencesPartenaires;
         // Ajout de chambres codées en dur
         this.chambres.addAll(chambres);
     }
-    Hotel(){}
 
 
 }
