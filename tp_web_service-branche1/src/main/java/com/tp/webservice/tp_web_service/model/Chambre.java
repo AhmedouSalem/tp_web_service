@@ -15,6 +15,7 @@ public class Chambre {
     private String id;
     private Integer nbLit;
     private Double prix;
+    private Double prixAdapte;
 
     public Chambre(Integer nbLit, Double prix ){
         this.id = generateNewId();
@@ -55,4 +56,13 @@ public class Chambre {
         return UUID.randomUUID().toString(); // Génère un identifiant unique sous forme de chaîne
     }
 
+    public Double calculerPrix(Integer pourcentage, Chambre chambre) {
+        prixAdapte = chambre.getPrix();
+        if (chambre.getNbLit() <= 1) {
+            prixAdapte = (chambre.getPrix() + (chambre.getPrix() *( pourcentage/100)));
+        } else if (chambre.getNbLit() >= 2) {
+            prixAdapte = (chambre.getPrix() + (chambre.getPrix() * (pourcentage/100)));
+        }
+        return prixAdapte;
+    }
 }

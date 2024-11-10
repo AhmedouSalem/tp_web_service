@@ -3,10 +3,7 @@ package com.tp.webservice.tp_web_service.webservice;
 import com.tp.webservice.tp_web_service.ManageException.ChambreNotFoundException;
 import com.tp.webservice.tp_web_service.ManageException.LoginException;
 import com.tp.webservice.tp_web_service.ManageException.VilleNotFoundException;
-import com.tp.webservice.tp_web_service.model.Agence;
-import com.tp.webservice.tp_web_service.model.Hotel;
-import com.tp.webservice.tp_web_service.model.Login;
-import com.tp.webservice.tp_web_service.model.Offre;
+import com.tp.webservice.tp_web_service.model.*;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -20,4 +17,8 @@ public interface HotelWebServiceConsulting {
     public List<Offre> consulterLesOffres(String identifiant, String password, String ville, XMLGregorianCalendar dateDebutReservation, XMLGregorianCalendar dateFinReservation, Integer nbPersonne)
             throws LoginException, VilleNotFoundException, ChambreNotFoundException;
     public int calculNbHotel();
+    public List<Agence> getAgences() ;
+    public List<Hotel> getHotels() ;
+    public List<Reservation> getReservations() ;
+    public List<Chambre> getHotelChambres(Hotel hotel) ;
 }

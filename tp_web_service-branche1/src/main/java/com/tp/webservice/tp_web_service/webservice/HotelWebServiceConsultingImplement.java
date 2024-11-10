@@ -49,7 +49,7 @@ public class HotelWebServiceConsultingImplement implements HotelWebServiceConsul
         chambreList.add(new Chambre(8, 700.0));
         chambreList.add(new Chambre(9, 800.0));
 
-        // Creation des agences
+        // Creation et ajout des agences
         agences.add(new Agence("#74AgParis", "Agence Paris",agenceParis));
         agences.add(new Agence("#58AgMontpellier", "Agence Montpellier",agenceMontpellier));
         agences.get(0).setLogin(new Login("agparis@gmail.com", "agparis"));
@@ -61,10 +61,24 @@ public class HotelWebServiceConsultingImplement implements HotelWebServiceConsul
         hotels.add(new Hotel("Nîmes", 5, chambreList, adresseNimes, agences));
         hotels.add(new Hotel("Perpignan", 4, chambreList, adressePerpignan, agences));
         hotels.add(new Hotel("Nancy", 4, chambreList, adresseNancy, agences));
-        hotels.add(new Hotel("Hôtel de Montpellier 1 ", 4, chambreList, adresseMontpellier1,agences));
+        hotels.add(new Hotel("Hôtel de Montpellier 1 ", 4, chambreList, adresseMontpellier1, agences));
         for (Agence agence : agences) {
             agence.setHotels(hotels);
         }
+
+        for (Hotel hotel : agences.get(0).getHotels()) {
+            for (Chambre chambre : hotel.getChambres()) {
+                chambre.setPrix(chambre.calculerPrix(2, chambre));
+            }
+        }
+
+        for (Hotel hotel : agences.get(1).getHotels()) {
+            for (Chambre chambre : hotel.getChambres()) {
+                chambre.setPrix(chambre.calculerPrix(5, chambre));
+            }
+        }
+
+
         reservationList.add(new Reservation(new Client("SALEM", "Ahmedou", "ah@gmail.com"), agences.get(1), hotels.get(5), chambreList.get(2), LocalDate.now().plusDays(1), LocalDate.now().plusDays(3)));
     }
     @Override
@@ -102,9 +116,9 @@ public class HotelWebServiceConsultingImplement implements HotelWebServiceConsul
             throw new VilleNotFoundException("Aucune offre disponible dans la ville de " + ville);
         }
 
-//        for(Offre offre : offresDisponibles) {
-//            System.out.println(offre);
-//        }
+       for(Offre offre : offresDisponibles) {
+           System.out.println(offre);
+        }
 
         return offresDisponibles;
     }
@@ -120,6 +134,26 @@ public class HotelWebServiceConsultingImplement implements HotelWebServiceConsul
     @Override
     public int calculNbHotel() {
         return hotels.size();
+    }
+
+    @Override
+    public List<Agence> getAgences() {
+        return agences;
+    }
+
+    @Override
+    public List<Hotel> getHotels() {
+        return hotels;
+    }
+
+    @Override
+    public List<Reservation> getReservations() {
+        return reservationList;
+    }
+
+    @Override
+    public List<Chambre> getHotelChambres(Hotel hotel) {
+        return hotel.getChambres();
     }
 
 
